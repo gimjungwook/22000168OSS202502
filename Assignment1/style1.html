@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* 기본 설정 */
+      body {
+        margin: 20px;
+      }
+
+      /* 레이아웃 클래스 */
+      .container {
+        min-width: 900px;
+      }
+      .wrapper {
+        position: relative;
+      }
+
+      /* 색상 클래스 */
+      .bg-green {
+        background: #04aa6d;
+      }
+      .bg-blue {
+        background: #32a4e7;
+      }
+      .bg-gray {
+        background: #f1f1f1;
+      }
+      .text-white {
+        color: white;
+      }
+
+      /* 박스 클래스 */
+      .box {
+        border-radius: 4px;
+        padding: 10px;
+      }
+
+      /* 헤더 */
+      .header {
+        padding: 15px;
+        margin: 4px;
+      }
+
+      /* 메뉴 */
+      .menu {
+        width: 200px;
+        float: left;
+      }
+
+      .menulist {
+        margin: 0;
+        padding: 0;
+      }
+
+      .menuitem {
+        list-style: none;
+        padding: 2px;
+        cursor: pointer;
+        margin: 4px;
+        border: 1px solid #d4d4d4;
+      }
+
+      .menuitem:hover {
+        background: white;
+      }
+      .menuitem.active {
+        font-weight: bold;
+      }
+
+      /* 컨텐츠 */
+      .content {
+        margin: 0 210px;
+      }
+
+      /* 사이드바 */
+      .sidebar {
+        width: 180px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: 4px;
+      }
+
+      /* 푸터 */
+      .footer {
+        text-align: center;
+        font-size: 70%;
+        margin: 4px;
+      }
+
+      /* 기타 */
+      .no-margin {
+        margin: 0;
+        padding: 0;
+      }
+      a {
+        color: black;
+        text-decoration: underline;
+      }
+      a:hover {
+        text-decoration: none;
+      }
+    </style>
+    <title>Welcome to 22000168's Homepage/title>
+  </head>
+  <body>
+    <div class="container wrapper">
+      <div class="header box bg-green text-white">
+        <h1 class="no-margin">Welcome to My Homepage</h1>
+        <p class="no-margin">Use the menu to select different Stylesheets</p>
+      </div>
+      <div class="wrapper">
+        <div class="menu">
+          <ul class="menulist">
+            <li
+              class="menuitem box bg-green text-white active"
+              onclick="location.href='style1.html'"
+            >
+              Stylesheet 1
+            </li>
+            <li
+              class="menuitem box bg-gray"
+              onclick="location.href='style2.html'"
+            >
+              Stylesheet 2
+            </li>
+            <li class="menuitem box bg-gray" onclick="">Stylesheet 3</li>
+            <li class="menuitem box bg-gray" onclick="">Stylesheet 4</li>
+            <li
+              class="menuitem box bg-gray"
+              onclick="location.href='index.html'"
+            >
+              No Stylesheet
+            </li>
+          </ul>
+        </div>
+        <div class="content box">
+          <h1>Same Page Different Stylesheets</h1>
+          <p>
+            This is a demonstration of how different stylesheets can change the
+            layout of your HTML page. You can change the layout of this page by
+            selecting different stylesheets in the menu, or by selecting one of
+            the following links:<br />
+            <a href="style1.html" onclick="">Stylesheet1</a>,
+            <a href="style2.html" onclick="">Stylesheet2</a>,
+            <a href="#" onclick="">Stylesheet3</a>,
+            <a href="#" onclick="">Stylesheet4</a>.
+          </p>
+          <h2>No Styles</h2>
+          <p>
+            This page uses DIV elements to group different sections of the HTML
+            page. Click here to see how the page looks like with no
+            stylesheet:<br /><a
+              href="index.html"
+              onclick="noStyles();return false"
+              >No Stylesheet</a
+            >.
+          </p>
+        </div>
+        <div class="sidebar box bg-blue text-white">
+          <h3>Side-Bar</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+            nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
+            volutpat.
+          </p>
+        </div>
+      </div>
+      <div class="footer box bg-gray">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+        nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
+        volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
+        ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+        Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
+        molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero
+        eros et accumsan et iusto odio dignissim qui blandit praesent luptatum
+        zzril delenit augue duis dolore te feugait nulla facilisi.
+      </div>
+    </div>
+  </body>
+</html>

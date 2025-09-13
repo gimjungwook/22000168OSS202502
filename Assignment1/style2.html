@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* 기본 설정 */
+      body {
+        background: #d14836;
+      }
+
+      /* 레이아웃 클래스 */
+      .container {
+        min-width: 900px;
+      }
+      .wrapper {
+        position: relative;
+        overflow: auto;
+      }
+
+      /* 색상 클래스 */
+      .bg-red {
+        background: #d14836;
+      }
+      .bg-white {
+        background: white;
+      }
+      .bg-pink {
+        background: #f6dad7;
+      }
+      .text-white {
+        color: white;
+      }
+      .text-red {
+        color: #d14836;
+      }
+
+      /* 헤더 */
+      .header {
+        padding: 15px;
+        font-size: 30px;
+      }
+
+      .header h1 {
+        margin: 0;
+        line-height: 50px;
+      }
+
+      /* 메뉴 */
+      .menu {
+        width: 190px;
+        float: right;
+      }
+
+      .menulist {
+        padding: 0;
+        font-size: 16px;
+      }
+
+      .menuitem {
+        width: 155px;
+        border-radius: 40px;
+        list-style: none;
+        margin: 10px;
+        padding: 5px;
+        text-align: center;
+        cursor: pointer;
+        border: 1px solid #d14836;
+      }
+
+      .menuitem:hover {
+        background: white;
+        color: #d14836;
+      }
+
+      .menuitem.active {
+        font-weight: bold;
+      }
+
+      /* 컨텐츠 */
+      .content {
+        padding: 10px;
+        font-size: 80%;
+      }
+
+      .content h1,
+      .content h2 {
+        color: #d14836;
+      }
+
+      /* 사이드바 */
+      .sidebar {
+        padding: 10px;
+      }
+
+      /* 푸터 */
+      .footer {
+        text-align: center;
+        padding: 10px;
+        font-size: 70%;
+      }
+
+      /* 링크 */
+      a {
+        color: #d14836;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+    <title>Welcome to 22000168's Homepage</title>
+  </head>
+  <body>
+    <div class="container wrapper">
+      <div class="header text-white">
+        <h1>Welcome to My Homepage</h1>
+        <p>Use the menu to select different Stylesheets</p>
+      </div>
+      <div class="wrapper">
+        <div class="menu">
+          <ul class="menulist">
+            <li
+              class="menuitem bg-red text-white"
+              onclick="location.href='style1.html'"
+            >
+              Stylesheet 1
+            </li>
+            <li
+              class="menuitem bg-white text-red active"
+              onclick="location.href='style2.html'"
+            >
+              Stylesheet 2
+            </li>
+            <li class="menuitem bg-red text-white" onclick="">Stylesheet 3</li>
+            <li class="menuitem bg-red text-white" onclick="">Stylesheet 4</li>
+            <li
+              class="menuitem bg-red text-white"
+              onclick="location.href='index.html'"
+            >
+              No Stylesheet
+            </li>
+          </ul>
+        </div>
+        <div class="content bg-white">
+          <h1>Same Page Different Stylesheets</h1>
+          <p>
+            This is a demonstration of how different stylesheets can change the
+            layout of your HTML page. You can change the layout of this page by
+            selecting different stylesheets in the menu, or by selecting one of
+            the following links:<br />
+            <a href="style1.html" onclick="">Stylesheet1</a>,
+            <a href="style2.html" onclick="">Stylesheet2</a>,
+            <a href="#" onclick="">Stylesheet3</a>,
+            <a href="#" onclick="">Stylesheet4</a>.
+          </p>
+          <h2>No Styles</h2>
+          <p>
+            This page uses DIV elements to group different sections of the HTML
+            page. Click here to see how the page looks like with no
+            stylesheet:<br /><a
+              href="index.html"
+              onclick="noStyles();return false"
+              >No Stylesheet</a
+            >.
+          </p>
+        </div>
+        <div class="sidebar bg-pink text-red">
+          <h3>Side-Bar</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+            nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
+            volutpat.
+          </p>
+        </div>
+      </div>
+      <div class="footer text-white">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+        nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
+        volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
+        ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+        Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
+        molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero
+        eros et accumsan et iusto odio dignissim qui blandit praesent luptatum
+        zzril delenit augue duis dolore te feugait nulla facilisi.
+      </div>
+    </div>
+  </body>
+</html>
