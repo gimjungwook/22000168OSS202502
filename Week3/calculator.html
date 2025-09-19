@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h4>덧셈 계산기</h4>
+    <form>
+      <input id="num1" type="number" />
+      +
+      <input id="num2" type="number" />
+      <input type="button" value="=" onclick="listener_add()" />
+      <input id="sum" type="number" />
+      <br />
+      <input type="reset" value="초기화" />
+    </form>
+  </body>
+  <script>
+    function listener_add() {
+      let num1 = document.getElementById("num1");
+      let num2 = document.getElementById("num2");
+
+      let sum = Number(num1.value) + Number(num2.value);
+
+      document.getElementById("sum").value = sum;
+
+      alert(sum);
+    }
+  </script>
+</html>

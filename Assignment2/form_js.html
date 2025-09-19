@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: #f8f9fa;
+        color: #212529;
+        line-height: 1.5;
+      }
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      /* Typography */
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+      h4 {
+        font-size: 1.5rem;
+        margin: 20px 0 15px;
+      }
+      h6 {
+        margin-bottom: 5px;
+      }
+      small {
+        font-size: 0.875rem;
+      }
+      .lead {
+        font-size: 1.25rem;
+        font-weight: 300;
+      }
+      .text-center {
+        text-align: center;
+      }
+      .text-muted {
+        color: #6c757d;
+      }
+      .text-primary {
+        color: #0d6efd;
+      }
+      .text-success {
+        color: #198754;
+      }
+
+      /* Layout */
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin: 20px 0;
+      }
+      .row.g-3 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+      }
+      .row.g-5 {
+        gap: 3rem;
+      }
+      .col-12 {
+        grid-column: 1 / -1;
+      }
+      .col-sm-6 {
+        grid-column: span 1;
+      }
+      .col-md-3 {
+        grid-column: span 1;
+      }
+      .col-md-4,
+      .col-md-5 {
+        grid-column: span 2;
+      }
+      .col-md-6 {
+        grid-column: span 1;
+      }
+
+      @media (min-width: 768px) {
+        .col-md-5 {
+          flex: 1;
+        }
+        .col-md-7 {
+          flex: 1.5;
+        }
+        .col-lg-4 {
+          flex: 1;
+        }
+        .col-lg-8 {
+          flex: 2;
+        }
+        .order-md-last {
+          order: 2;
+        }
+      }
+
+      /* Forms */
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: #86b7fe;
+        box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+      }
+
+      /* Input group */
+      .input-group {
+        display: flex;
+      }
+      .input-group-text {
+        padding: 8px 12px;
+        background: #e9ecef;
+        border: 1px solid #ced4da;
+        border-radius: 5px 0 0 5px;
+      }
+      .input-group input {
+        border-radius: 0 5px 5px 0;
+      }
+
+      /* Checkbox/Radio */
+      .form-check {
+        margin: 10px 0;
+        padding-left: 1.5em;
+        position: relative;
+      }
+      .form-check-input {
+        position: absolute;
+        left: 0;
+        margin-top: 0.25em;
+      }
+      input[type="checkbox"],
+      input[type="radio"] {
+        width: 1em;
+        height: 1em;
+        margin-right: 8px;
+        accent-color: #0d6efd;
+      }
+      .form-check-label {
+        display: inline-block;
+      }
+
+      /* Validation */
+      .invalid-feedback {
+        display: none;
+        color: #dc3545;
+        font-size: 0.875rem;
+        margin-top: 5px;
+      }
+      .was-validated :invalid {
+        border-color: #dc3545;
+      }
+      .was-validated :invalid ~ .invalid-feedback {
+        display: block;
+      }
+
+      /* Buttons */
+      button,
+      .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: all 0.3s;
+      }
+      .btn-primary {
+        background: #0d6efd;
+        color: white;
+      }
+      .btn-primary:hover {
+        background: #0b5ed7;
+      }
+      .btn-secondary {
+        background: #6c757d;
+        color: white;
+      }
+      .btn-lg {
+        padding: 12px 24px;
+        font-size: 1.25rem;
+        width: 100%;
+      }
+
+      /* Components */
+      .card {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+      }
+      .badge {
+        display: inline-block;
+        padding: 5px 10px;
+        background: #0d6efd;
+        color: white;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: bold;
+      }
+
+      /* List Group */
+      .list-group {
+        list-style: none;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      .list-group-item {
+        padding: 12px;
+        background: white;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+      }
+      .list-group-item:last-child {
+        border-bottom: none;
+      }
+      .bg-light {
+        background: #f8f9fa !important;
+      }
+
+      /* Utilities */
+      .d-block {
+        display: block;
+      }
+      .d-flex {
+        display: flex;
+      }
+      .justify-content-between {
+        justify-content: space-between;
+      }
+      .align-items-center {
+        align-items: center;
+      }
+      .mx-auto {
+        margin: 0 auto;
+      }
+      .my-4 {
+        margin: 1.5rem 0;
+      }
+      .my-5 {
+        margin: 3rem 0;
+      }
+      .mb-1 {
+        margin-bottom: 0.25rem;
+      }
+      .mb-3 {
+        margin-bottom: 1rem;
+      }
+      .mb-4 {
+        margin-bottom: 1.5rem;
+      }
+      .py-5 {
+        padding: 3rem 0;
+      }
+      .pt-5 {
+        padding-top: 3rem;
+      }
+      .p-2 {
+        padding: 0.5rem;
+      }
+      .w-100 {
+        width: 100%;
+      }
+      .lh-sm {
+        line-height: 1.25;
+      }
+      .my-0 {
+        margin: 0;
+      }
+
+      /* Others */
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      a {
+        color: #0d6efd;
+      }
+      hr {
+        border: none;
+        border-top: 1px solid #dee2e6;
+        margin: 1.5rem 0;
+      }
+      .list-inline-item {
+        display: inline;
+        margin-right: 15px;
+      }
+      footer {
+        text-align: center;
+        color: #6c757d;
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+  <body class="bg-light">
+    <div class="container">
+      <main>
+        <div class="py-5 text-center">
+          <img src="logo.png" width="72" class="d-block mx-auto mb-4" />
+          <h2>Checkout form</h2>
+          <p class="lead">
+            Below is an example form built entirely with Bootstrap's form
+            controls. Each required form group has a validation state that can
+            be triggered by attempting to submit the form without completing it.
+          </p>
+        </div>
+
+        <div class="row g-5">
+          <div class="col-md-5 col-lg-4 order-md-last">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-primary">Your cart</span>
+              <span class="badge bg-primary rounded-pill">3</span>
+            </h4>
+            <ul class="list-group mb-3">
+              <li class="list-group-item d-flex justify-content-between lh-sm">
+                <div>
+                  <h6 class="my-0">Product name</h6>
+                  <small class="text-muted">Brief description</small>
+                </div>
+                <span class="text-muted">$12</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between lh-sm">
+                <div>
+                  <h6 class="my-0">Second product</h6>
+                  <small class="text-muted">Brief description</small>
+                </div>
+                <span class="text-muted">$8</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between lh-sm">
+                <div>
+                  <h6 class="my-0">Third item</h6>
+                  <small class="text-muted">Brief description</small>
+                </div>
+                <span class="text-muted">$5</span>
+              </li>
+              <li
+                class="list-group-item d-flex justify-content-between bg-light"
+              >
+                <div class="text-success">
+                  <h6 class="my-0">Promo code</h6>
+                  <small>EXAMPLECODE</small>
+                </div>
+                <span class="text-success">−$5</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                <span>Total (USD)</span>
+                <strong>$20</strong>
+              </li>
+            </ul>
+
+            <form class="card p-2">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Promo code"
+                />
+                <button type="submit" class="btn btn-secondary">Redeem</button>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-7 col-lg-8">
+            <h4 class="mb-3">Billing address</h4>
+            <form class="needs-validation" novalidate>
+              <div class="row g-3">
+                <div class="col-sm-6">
+                  <label for="firstName" class="form-label">First name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="firstName"
+                    placeholder=""
+                    value=""
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Valid first name is required.
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <label for="lastName" class="form-label">Last name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lastName"
+                    placeholder=""
+                    value=""
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Valid last name is required.
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <label for="username" class="form-label">Username</label>
+                  <div class="input-group has-validation">
+                    <span class="input-group-text">@</span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="username"
+                      placeholder="Username"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Your username is required.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <label for="email" class="form-label"
+                    >Email <span class="text-muted">(Optional)</span></label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="you@example.com"
+                  />
+                  <div class="invalid-feedback">
+                    Please enter a valid email address for shipping updates.
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <label for="address" class="form-label">Address</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="address"
+                    placeholder="1234 Main St"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Please enter your shipping address.
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <label for="address2" class="form-label"
+                    >Address 2 <span class="text-muted">(Optional)</span></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="address2"
+                    placeholder="Apartment or suite"
+                  />
+                </div>
+
+                <div class="col-md-5">
+                  <label for="country" class="form-label">Country</label>
+                  <select class="form-select" id="country" required>
+                    <option value="">Choose...</option>
+                    <option>United States</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Please select a valid country.
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <label for="state" class="form-label">State</label>
+                  <select class="form-select" id="state" required>
+                    <option value="">Choose...</option>
+                    <option>California</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Please provide a valid state.
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <label for="zip" class="form-label">Zip</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="zip"
+                    placeholder=""
+                    required
+                  />
+                  <div class="invalid-feedback">Zip code required.</div>
+                </div>
+              </div>
+
+              <hr class="my-4" />
+
+              <div class="form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="same-address"
+                />
+                <label class="form-check-label" for="same-address"
+                  >Shipping address is the same as my billing address</label
+                >
+              </div>
+
+              <div class="form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="save-info"
+                />
+                <label class="form-check-label" for="save-info"
+                  >Save this information for next time</label
+                >
+              </div>
+
+              <hr class="my-4" />
+
+              <h4 class="mb-3">Payment</h4>
+
+              <div class="my-3">
+                <div class="form-check">
+                  <input
+                    id="credit"
+                    name="paymentMethod"
+                    type="radio"
+                    class="form-check-input"
+                    checked
+                    required
+                  />
+                  <label class="form-check-label" for="credit"
+                    >Credit card</label
+                  >
+                </div>
+                <div class="form-check">
+                  <input
+                    id="debit"
+                    name="paymentMethod"
+                    type="radio"
+                    class="form-check-input"
+                    required
+                  />
+                  <label class="form-check-label" for="debit">Debit card</label>
+                </div>
+                <div class="form-check">
+                  <input
+                    id="paypal"
+                    name="paymentMethod"
+                    type="radio"
+                    class="form-check-input"
+                    required
+                  />
+                  <label class="form-check-label" for="paypal">PayPal</label>
+                </div>
+              </div>
+
+              <div class="row gy-3">
+                <div class="col-12">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label for="cc-name" class="form-label"
+                        >Name on card</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="cc-name"
+                        placeholder=""
+                        required
+                      />
+                      <small class="text-muted"
+                        >Full name as displayed on card</small
+                      >
+                      <div class="invalid-feedback">
+                        Name on card is required
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="cc-number" class="form-label"
+                        >Credit card number</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="cc-number"
+                        placeholder=""
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        Credit card number is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label for="cc-expiration" class="form-label"
+                        >Expiration</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="cc-expiration"
+                        placeholder=""
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        Expiration date required
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="cc-cvv" class="form-label">CVV</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="cc-cvv"
+                        placeholder=""
+                        required
+                      />
+                      <div class="invalid-feedback">Security code required</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="my-4" />
+
+              <button class="w-100 btn btn-primary btn-lg" type="submit">
+                Continue to checkout
+              </button>
+            </form>
+          </div>
+        </div>
+      </main>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">© 2017–2022 Company Name</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="">Privacy</a></li>
+          <li class="list-inline-item"><a href="">Terms</a></li>
+          <li class="list-inline-item"><a href="">Support</a></li>
+        </ul>
+      </footer>
+    </div>
+
+    <script>
+      (() => {
+        "use strict";
+
+        const forms = document.querySelectorAll(".needs-validation");
+
+        Array.from(forms).forEach((form) => {
+          form.addEventListener(
+            "submit",
+            (event) => {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+
+              form.classList.add("was-validated");
+            },
+            false
+          );
+        });
+      })();
+    </script>
+  </body>
+</html>
