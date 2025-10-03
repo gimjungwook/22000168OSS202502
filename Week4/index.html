@@ -6,20 +6,78 @@
     <title>Document</title>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: white;
+      }
+      
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .box {
+        padding: 20px;
+        background-color: #f0f0f0;
+        border: 1px solid #ddd;
+      }
+      
+      /* 미디어 쿼리 예시 */
+      @media (max-width: 768px) {
+        body {
+          background-color: lightblue;
+        }
+        .box {
+          background-color: lightcoral;
+          font-size: 14px;
+        }
+        .hide-mobile {
+          display: none;
+        }
+      }
+      
+      @media (min-width: 769px) {
+        body {
+          background-color: lightgreen;
+        }
+        .container {
+          flex-direction: row;
+        }
+        .box {
+          background-color: lightyellow;
+          font-size: 16px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div id="div_test">-</div>
-    <input type="text" id="input_test" />
-    <div id="div_test2">test2</div>
-    <input type="text" id="input_test2" />
-
-    <div class="div_class">1234</div>
-    <div class="div_class">5678</div>
-
-    <div class="div_class2">2-1234</div>
-    <div class="div_class2">2-5678</div>
-
+    <div class="container">
+      <div class="box">
+        <div id="div_test">-</div>
+        <input type="text" id="input_test" />
+      </div>
+      
+      <div class="box">
+        <div id="div_test2">test2</div>
+        <input type="text" id="input_test2" />
+      </div>
+      
+      <div class="box hide-mobile">
+        <div class="div_class">1234</div>
+        <div class="div_class">5678</div>
+      </div>
+      
+      <div class="box">
+        <div class="div_class2">2-1234</div>
+        <div class="div_class2">2-5678</div>
+      </div>
+    </div>
+    
     <button onclick="listener_input_test()">input value check</button>
+    <p id="screen-size">현재 화면 크기: <span id="size-display"></span></p>
     <script>
       let div_test = document.getElementById("div_test");
       //alert(div_test.innerText);
@@ -45,6 +103,102 @@
           alert($(div_class2[i]).html());
         }
       }
+      
+      // JavaScript로 미디어 쿼리와 동일한 기능 구현
+      function applyResponsiveStyles() {
+        const width = window.innerWidth;
+        const body = document.body;
+        const container = document.querySelector('.container');
+        const boxes = document.querySelectorAll('.box');
+        const hideMobile = document.querySelectorAll('.hide-mobile');
+        const sizeDisplay = document.getElementById('size-display');
+        
+        // 화면 크기 표시
+        sizeDisplay.textContent = width + 'px';
+        
+        if (width <= 768) {
+          // 모바일 스타일 (768px 이하)
+          body.style.backgroundColor = 'lightblue';
+          
+          if (container) {
+            container.style.flexDirection = 'column';
+          }
+          
+          boxes.forEach(box => {
+            box.style.backgroundColor = 'lightcoral';
+            box.style.fontSize = '14px';
+          });
+          
+          hideMobile.forEach(element => {
+            element.style.display = 'none';
+          });
+          
+        } else {
+          // 데스크톱 스타일 (769px 이상)
+          body.style.backgroundColor = 'lightgreen';
+          
+          if (container) {
+            container.style.flexDirection = 'row';
+          }
+          
+          boxes.forEach(box => {
+            box.style.backgroundColor = 'lightyellow';
+            box.style.fontSize = '16px';
+          });
+          
+          hideMobile.forEach(element => {
+            element.style.display = 'block';
+          });
+        }
+      }
+      
+      // matchMedia를 사용한 미디어 쿼리 감지
+      const mediaQueryMobile = window.matchMedia('(max-width: 768px)');
+      const mediaQueryDesktop = window.matchMedia('(min-width: 769px)');
+      
+      function handleMediaQueryChange() {
+        if (mediaQueryMobile.matches) {
+          console.log('모바일 뷰 활성화 (768px 이하)');
+        } else if (mediaQueryDesktop.matches) {
+          console.log('데스크톱 뷰 활성화 (769px 이상)');
+        }
+        
+        // 스타일 적용
+        applyResponsiveStyles();
+      }
+      
+      // 초기 실행
+      handleMediaQueryChange();
+      
+      // 미디어 쿼리 변경 리스너 추가
+      mediaQueryMobile.addEventListener('change', handleMediaQueryChange);
+      mediaQueryDesktop.addEventListener('change', handleMediaQueryChange);
+      
+      // window resize 이벤트 리스너 (더 세밀한 제어)
+      window.addEventListener('resize', () => {
+        applyResponsiveStyles();
+      });
+      
+      // 디바운스 함수로 resize 이벤트 최적화
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+      
+      // 디바운스된 resize 핸들러
+      const debouncedResize = debounce(() => {
+        applyResponsiveStyles();
+        console.log('화면 크기 변경됨:', window.innerWidth + 'px');
+      }, 250);
+      
+      window.addEventListener('resize', debouncedResize);
     </script>
   </body>
 </html>

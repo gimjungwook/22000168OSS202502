@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale= 1.0" />
+  </head>
+  <body>
+    <style>
+      div.example {
+        font-size: 50px;
+        background-color: cyan;
+      }
+      div.example1 {
+        font-size: 60px;
+        background-color: blue;
+      }
+      div.example2 {
+        font-size: 70px;
+        background-color: blueviolet;
+      }
+
+      /* @media only screen and (max-width: 475px) {
+        div.example {
+          font-size: 30px;
+          background-color: blueviolet;
+        }
+      }
+      @media only screen and (min-width: 475px) and (max-width: 700px) {
+        div.example {
+          font-size: 30px;
+          background-color: green;
+        }
+      }
+      @media only screen and (min-width: 701px) {
+        div.example {
+          font-size: 30px;
+          background-color: cyan;
+        }
+      } */
+    </style>
+    <div class="example">example</div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <script>
+    let width = window.innerWidth;
+    let width2 = $(document).width();
+
+    listner_resize();
+
+    console.log("window width: " + width);
+    console.log("jquery width: " + width2);
+    function listner_resize() {
+      $(".example").removeClass;
+      if (width > 700) {
+        $(".example").addClass("example1");
+      } else if (width > 475 && width < 700) {
+        $(".example").addClass("example2");
+      } else {
+        $(".example").addClass("example3");
+      }
+    }
+  </script>
+</html>
