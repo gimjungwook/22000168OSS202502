@@ -1,0 +1,21 @@
+{
+  "name": "assignment2-2-todo-app",
+  "version": "1.0.0",
+  "description": "JavaScript AJAX CRUD Practice with json-server",
+  "main": "index.html",
+  "scripts": {
+    "start": "json-server --watch my_data.json --port 3000",
+    "server": "json-server --watch my_data.json --port 3000"
+  },
+  "keywords": [
+    "ajax",
+    "crud",
+    "json-server",
+    "todo"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "json-server": "^0.17.4"
+  }
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .header {
+      background-color: green;
+      padding: 10px;
+    }
+    .white-text {
+      color: white;
+    }
+    .no-margin,
+    h1 {
+      margin: 0;
+      padding: 0;
+    }
+    .li {
+      border-color: gray;
+      border-style: solid;
+      margin: 5px;
+      padding: 5px;
+    }
+    .li:hover {
+      background-color: gray;
+    }
+    td {
+      vertical-align: baseline;
+    }
+  </style>
+  <body>
+    <div class="header white-text">
+      <h1 class="no-margin">Welcome to My Homepage</h1>
+      <div>Use the menu to select different Stylesheets</div>
+    </div>
+
+    <table class="no-margin">
+      <tr>
+        <td style="width: 15%">
+          <div class="li">Stylesheet 1</div>
+          <div class="li">Stylesheet 2</div>
+          <div class="li">Stylesheet 3</div>
+          <div class="li">Stylesheet 4</div>
+          <div class="li">No Stylesheet</div>
+        </td>
+        <td style="width: 70%">
+          <h1>Same Page Different Stylesheets</h1>
+          <div>
+            This is a demonstration of how different stylesheets can change the
+            layout of your HTML page. You can change the layout of this page by
+            selecting different stylesheets in the menu, or by selecting one of
+            the following links: <a>Stylesheet1</a>, <a>Stylesheet2</a>,
+            <a>Stylesheet3</a>, <a>Stylesheet4</a>.
+          </div>
+          <h1>No Styles</h1>
+          <div>
+            This page uses DIV elements to group different sections of the HTML
+            page. Click here to see how the page looks like with no stylesheet:
+            <a>No Stylesheet</a>.
+          </div>
+        </td>
+        <td style="width: 15%; background-color: blue" class="white-text">
+          <h2>Side-Bar</h2>
+          <div>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+            nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
+            volutpat.
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <div style="background-color: gray; border-style: solid; border-radius: 15">
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+      nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut
+      wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
+      lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum
+      iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel
+      illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto
+      odio dignissim qui blandit praesent luptatum zzril delenit augue duis
+      dolore te feugait nulla facilisi.
+    </div>
+  </body>
+</html>
