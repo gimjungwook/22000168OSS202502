@@ -107,6 +107,15 @@
       "priority": "Low",
       "status": "완료",
       "dueDate": "2024-11-07"
+    },
+    {
+      "title": "WBS 작성하기",
+      "description": "실전 스튜디오 교과목을 위한 WBS작성",
+      "category": "공부",
+      "priority": "High",
+      "status": "완료",
+      "dueDate": "2025-11-08",
+      "id": 13
     }
   ]
 }
