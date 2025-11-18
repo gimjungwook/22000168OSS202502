@@ -1,0 +1,189 @@
+/* 기본 스타일 */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background-color: #ffffff;
+  color: #212529;
+  line-height: 1.6;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* 헤더 스타일 */
+header h1 {
+  font-size: 2rem;
+  letter-spacing: -1px;
+}
+header p {
+  font-size: 1rem;
+}
+/* 테이블 스타일 */
+.table {
+  border: 1px solid #dee2e6;
+}
+.table thead {
+  border-bottom: 2px solid #212529;
+}
+.table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+.table th {
+  font-weight: 600;
+}
+/* 카드 스타일 */
+.card {
+  border: 1px solid #212529;
+  box-shadow: 0 1px 3px #dddddd;
+}
+.card:hover {
+  box-shadow: 0 2px 6px #cccccc;
+}
+.card-header {
+  border-bottom: 2px solid #212529;
+}
+.card-body {
+  background-color: #ffffff;
+}
+.mobile-cards .card {
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+/* 버튼 스타일 */
+.btn-dark {
+  background-color: #212529;
+  border-color: #212529;
+  font-weight: 500;
+}
+.btn-dark:hover {
+  background-color: #424649;
+  border-color: #424649;
+}
+.btn-outline-dark {
+  border: 2px solid #212529;
+  font-weight: 500;
+}
+.btn-outline-dark:hover {
+  background-color: #212529;
+  border-color: #212529;
+  color: white;
+}
+.btn-outline-danger {
+  border: 2px solid #dc3545;
+  color: #dc3545;
+  font-weight: 500;
+}
+.btn-outline-danger:hover {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: white;
+}
+/* 배지 스타일 */
+.badge {
+  padding: 5px 10px;
+  font-weight: 500;
+  font-size: 14px;
+}
+.badge.bg-dark {
+  background-color: #212529 !important;
+}
+.badge.bg-secondary {
+  background-color: #6c757d !important;
+}
+.badge.bg-white {
+  background-color: #ffffff !important;
+  border: 1px solid #dee2e6;
+  color: #212529;
+}
+/* 폼 스타일 */
+.form-control,
+.form-select {
+  border: 1px solid #495057;
+  border-radius: 4px;
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: #212529;
+  box-shadow: 0 0 0 2px #eeeeee;
+}
+.form-control.is-invalid,
+.form-select.is-invalid {
+  border-color: #dc3545;
+}
+.form-label {
+  color: #212529;
+  margin-bottom: 0.5rem;
+}
+/* 반응형 디자인 (RWD) */
+/* 모바일 (768px 미만) */
+@media (max-width: 767px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  header p {
+    font-size: 1rem;
+  }
+  .btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  .card {
+    margin-bottom: 1rem;
+  }
+  .form-control,
+  .form-select {
+    font-size: 16px;
+  }
+  .table-responsive {
+    display: none !important;
+  }
+  .mobile-cards {
+    display: block !important;
+  }
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  .card-text {
+    font-size: 0.9rem;
+  }
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .badge {
+    font-size: 12px;
+    padding: 3px 8px;
+  }
+}
+/* 데스크톱 (768px 이상) */
+@media (min-width: 768px) {
+  .table-responsive {
+    display: block !important;
+  }
+  .mobile-cards {
+    display: none !important;
+  }
+  .container {
+    max-width: 900px;
+  }
+  header h1 {
+    font-size: 3rem;
+  }
+  .card {
+    margin-bottom: 2rem;
+  }
+}
+/* 대형 데스크톱 (1200px 이상) */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+  .table td,
+  .table th {
+    padding: 1rem;
+  }
+}
